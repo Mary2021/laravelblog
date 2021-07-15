@@ -1,5 +1,3 @@
-#valmis docker image-d https://hub.docker.com/  otsi php
-
 version: '3.8'
 
 services: 
@@ -10,7 +8,6 @@ services:
         #image: php:8-apache 
         ports: 
             - 8100:80
-            # - 443:443
         volumes:
             - ./html:/var/www/html
 
@@ -24,33 +21,6 @@ services:
             - dbdata:/var/lib/mysql
         ports:
             - 3306:3306 
-    # adminer:
-    #     image: adminer
-    #     restart: always
-    #     ports:
-    #         - 8080:8080
-    # mongo:
-    #     image: mongo
-    #     restart: always
-    #     environment:
-    #       MONGO_INITDB_ROOT_USERNAME: root
-    #       MONGO_INITDB_ROOT_PASSWORD: example
-    #     ports:
-    #       - 28017:27017
-    
-    # mongo-express:
-    #     image: mongo-express
-    #     restart: always
-    #     ports:
-    #       - 8081:8081
-    #     environment:
-    #       ME_CONFIG_MONGODB_ADMINUSERNAME: root
-    #       ME_CONFIG_MONGODB_ADMINPASSWORD: example
 
 volumes:
     dbdata:
-  # services:
-  #   redis:
-  #     image: redis
-  #     ports:
-  #       - 6379:6379
