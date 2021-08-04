@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use Database\Seeders\PostSeeder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -36,7 +39,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post=new Post();
+
+        $user=[User::factory()->create(['id'=> $post->user_id])];
+        $user_id=$user[0]['id'];
         $post->content=$request->input('content');
+        $post->user_id= $user_id;
         $post->save();
         return response()->redirectTo('/');
     }
